@@ -52,6 +52,8 @@ defmodule Rmo.Web do
       import Rmo.Router.Helpers
       import Rmo.ErrorHelpers
       import Rmo.Gettext
+
+      import Rmo.Session, only: [current_user: 1, logged_in?: 1]
     end
   end
 
