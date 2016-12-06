@@ -1,0 +1,18 @@
+body {
+    margin: 0;
+}
+
+.navbar {
+    margin: 0;
+}
+
+
+/* Phoenix flash messages */
+
+.alert {
+    margin-top: 20px;
+}
+
+.alert:empty {
+    display: none;
+}

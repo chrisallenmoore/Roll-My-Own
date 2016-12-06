@@ -21,6 +21,10 @@ defmodule Rmo.Router do
     get    "/login",  SessionController, :new
     post   "/login",  SessionController, :create
     delete "/logout", SessionController, :delete
+    get "/users", UserController, :index
+    get "/users/:id", UserController, :show
+    get "/users/:id/edit", UserController, :edit
+    put "/users/:id", UserController, :update
   end
 
   # Other scopes may use custom stacks.

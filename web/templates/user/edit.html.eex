@@ -1,0 +1,10 @@
+<div class="container">
+
+    <h2>Edit your profile</h2>
+
+    <%= render "form.html", changeset: @changeset,
+    action: user_path(@conn, :update, @user) %>
+
+    <%= link "Back", to: user_path(@conn, :index) %>
+
+</div>

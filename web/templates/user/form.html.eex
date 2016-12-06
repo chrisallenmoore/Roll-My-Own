@@ -1,0 +1,93 @@
+<div class="container">
+
+<%= form_for @changeset, @action, fn f -> %>
+<%= if @changeset.action do %>
+<div class="alert alert-danger">
+    <p>Oops, something went wrong! Please check the errors below:</p>
+    <ul>
+        <%= for {attr, message} <- f.errors do %>
+        <li><%= humanize(attr) %> <%= translate_error(message) %></li>
+        <% end %>
+    </ul>
+</div>
+<% end %>
+
+<div class="form-group">
+    <%= label f, :username, "username", class: "control-label" %>
+    <%= text_input f, :username, class: "form-control" %>
+    <%= error_tag f, :username %>
+</div>
+
+<div class="form-group">
+    <%= label f, :email, "email", class: "control-label" %>
+    <%= text_input f, :email, class: "form-control" %>
+    <%= error_tag f, :email %>
+</div>
+
+<div class="form-group">
+    <label>Password</label>
+    <%= password_input f, :password, class: "form-control" %>
+    <%= error_tag f, :password %>
+</div>
+
+<div class="form-group">
+    <label>Password Confirmation</label>
+    <%= password_input f, :password_confirmation, class: "form-control" %>
+    <%= error_tag f, :password_confirmation %>
+</div>
+
+<div class="form-group">
+    <%= label f, :first_name, "first name", class: "control-label" %>
+    <%= text_input f, :first_name, class: "form-control" %>
+    <%= error_tag f, :first_name %>
+</div>
+
+<div class="form-group">
+    <%= label f, :last_name, "last name", class: "control-label" %>
+    <%= text_input f, :last_name, class: "form-control" %>
+    <%= error_tag f, :last_name %>
+</div>
+
+<div class="form-group">
+    <%= date_select f, :date_of_birth, year: [options: 1920..2100], builder: fn b -> %>
+    DOB: <%= b.(:day, []) %> / <%= b.(:month, []) %> / <%= b.(:year, []) %>
+    <% end %>
+    <%= error_tag f, :date_of_birth %>
+</div>
+
+<div class="form-group">
+    <%= label f, :gender, "I'm a", class: "control-label" %>
+    <%= select f, :gender, ["Male": "M", "Female": "F"], prompt: "Choose your gender", class: "form-control" %>
+    <%= error_tag f, :gender %>
+</div>
+
+<div class="form-group">
+    <%= label f, :gender_preference, "looking for a", class: "control-label" %>
+    <%= select f, :gender_preference, ["Male": "M", "Female": "F"], prompt: "Choose your gender", class: "form-control" %>
+    <%= error_tag f, :gender_preference %>
+</div>
+
+<div class="form-group">
+    <%= label f, :status, "status", class: "control-label" %>
+    <%= text_input f, :status, class: "form-control" %>
+    <%= error_tag f, :status %>
+</div>
+
+<div class="form-group">
+    <%= label f, :location, "location", class: "control-label" %>
+    <%= text_input f, :location, class: "form-control" %>
+    <%= error_tag f, :location %>
+</div>
+
+<div class="form-group">
+    <%= label f, :description, "tell a bit about yourself", class: "control-label" %>
+    <%= textarea f, :description, class: "form-control" %>
+    <%= error_tag f, :description %>
+</div>
+
+<div class="form-group">
+    <%= submit "Submit", class: "btn btn-primary" %>
+</div>
+<% end %>
+
+</div>
