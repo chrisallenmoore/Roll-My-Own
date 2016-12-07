@@ -54,7 +54,7 @@
 
     <div class="form-group">
         <%= label f, :status, "status", class: "control-label" %>
-        <%= text_input f, :status, class: "form-control" %>
+        <%= select f, :status, ["Single": "single", "Player": "player", "Complicated": "complicated", "Married": "married", "Separated": "separated", "Divorced": "divorced", "Rather not say": "rather not say"], prompt: "Choose your status", class: "form-control" %>
         <%= error_tag f, :status %>
     </div>
 
