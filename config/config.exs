@@ -17,6 +17,9 @@ config :rmo, Rmo.Endpoint,
   pubsub: [name: Rmo.PubSub,
            adapter: Phoenix.PubSub.PG2]
 
+config :scrivener_html,
+ routes_helper: Rmo.Router.Helpers
+
 # Configures Elixir's Logger
 config :logger, :console,
   format: "$time $metadata[$level] $message\n",
