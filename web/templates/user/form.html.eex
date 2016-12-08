@@ -57,13 +57,13 @@
 
 <div class="form-group">
     <%= label f, :gender, "I'm a", class: "control-label" %>
-    <%= select f, :gender, ["Male": "M", "Female": "F"], prompt: "Choose your gender", class: "form-control" %>
+    <%= select f, :gender, ["Male": "m", "Female": "f"], prompt: "Choose your gender", class: "form-control" %>
     <%= error_tag f, :gender %>
 </div>
 
 <div class="form-group">
     <%= label f, :gender_preference, "looking for a", class: "control-label" %>
-    <%= select f, :gender_preference, ["Male": "M", "Female": "F"], prompt: "Choose your gender preference", class: "form-control" %>
+    <%= select f, :gender_preference, ["Male": "m", "Female": "f"], prompt: "Choose your gender preference", class: "form-control" %>
     <%= error_tag f, :gender_preference %>
 </div>
 
