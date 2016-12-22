@@ -4,32 +4,17 @@ defmodule Rmo.UserController do
   alias Rmo.User
   alias Rmo.QueryFilter
 
-  #def index(conn, _params) do
-    #users = Repo.all(User)
-    #render(conn, "index.html", users: users)
-  #end
-
   def index(conn, params) do
-
-    #%{ "gender_preference" => gender_preference, "status" => status } = _params
-
-
-
     users =
       Rmo.User
-      #|> where([p], p.gender == ^gender_preference)
-      #|> where([p], p.status == ^status)
       |> QueryFilter.filter(%User{}, params, [:gender_preference, :status])
       |> order_by(desc: :updated_at)
-      #|> Rmo.Repo.all()
       |> Rmo.Repo.paginate(params)
 
     render conn, :index,
-      users: users
-      #page_number: page.page_number,
-      #page_size: page.page_size,
-      #total_pages: page.total_pages,
-      #total_entries: page.total_entries
+      users: users,
+      gender_preference: params["gender_preference"],
+      status: params["status"]
   end
 
   def show(conn, %{"id" => id}) do

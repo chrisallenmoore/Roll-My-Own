@@ -22,6 +22,7 @@
         <% end %>
     </tbody>
 </table>
-<%= pagination_links @users, gender_preference: "f" %>
-<!-- TODO: need to use params from url in the pagination_links, this is hard coded right now -->
+
+<%= pagination_links @users, gender_preference: @gender_preference, status: @status %>
+<!-- TODO: uses params from url in the pagination_links, update with all other params that are searchable -->
 </div>
