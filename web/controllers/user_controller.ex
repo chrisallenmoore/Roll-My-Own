@@ -5,10 +5,10 @@ defmodule Rmo.UserController do
   alias Rmo.QueryFilter
 
   @doc """
-  Get value of :current_user from session, return the value
-  If no current user, return value of 0 for the "current_user" id
+  Get value of :current_user from session, return the value\n
+  If no current user, return value of 0 for the current_user id
   """
-  def check_for_current_user(conn, params) do
+  def get_current_user(conn, params) do
     if Plug.Conn.get_session(conn, :current_user) do
        Plug.Conn.get_session(conn, :current_user)
      else
@@ -18,7 +18,7 @@ defmodule Rmo.UserController do
 
   def index(conn, params) do
 
-    current_user = check_for_current_user(conn, params)
+    current_user = get_current_user(conn, params)
 
     users =
       Rmo.User
