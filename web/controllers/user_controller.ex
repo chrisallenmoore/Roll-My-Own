@@ -8,7 +8,7 @@ defmodule Rmo.UserController do
   Get value of :current_user from session, return the value\n
   If no current user, return value of 0 for the current_user id
   """
-  def get_current_user(conn, params) do
+  def get_current_user(conn) do
     if Plug.Conn.get_session(conn, :current_user) do
       Plug.Conn.get_session(conn, :current_user)
     else
@@ -16,9 +16,10 @@ defmodule Rmo.UserController do
     end
   end
 
+
   def index(conn, params) do
 
-    current_user = get_current_user(conn, params)
+    current_user = get_current_user(conn)
 
     users =
       Rmo.User
@@ -41,9 +42,18 @@ defmodule Rmo.UserController do
     end
 
     def edit(conn, %{"id" => id}) do
+
+      current_user = get_current_user(conn)
+
       user = Repo.get!(User, id)
       changeset = User.changeset(user)
-      render(conn, "edit.html", user: user, changeset: changeset)
+
+      if user.id == current_user do
+        render(conn, "edit.html", user: user, changeset: changeset)
+      else
+        redirect conn, to: "/"
+      end
+      
     end
 
     def update(conn, %{"id" => id, "user" => user_params}) do
@@ -57,7 +67,7 @@ defmodule Rmo.UserController do
           |> redirect(to: user_path(conn, :show, user))
           {:error, changeset} ->
             render(conn, "edit.html", user: user, changeset: changeset)
-      end
-    end
+          end
+        end
 
-end
+      end
