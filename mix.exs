@@ -41,7 +41,8 @@ defmodule Rmo.Mixfile do
      {:comeonin, "~> 3.0"},
      {:scrivener_ecto, "~> 1.0"},
      {:scrivener_list, "~> 1.0"},
-     {:scrivener_html, "~> 1.1"}]
+     {:scrivener_html, "~> 1.1"},
+     {:ex_doc, "~> 0.14.5", only: :dev}]
   end
 
   # Aliases are shortcuts or tasks specific to the current project.
