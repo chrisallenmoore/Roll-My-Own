@@ -51,9 +51,11 @@ defmodule Rmo.UserController do
       if user.id == current_user do
         render(conn, "edit.html", user: user, changeset: changeset)
       else
-        redirect conn, to: "/"
+        conn
+        |> put_flash(:info, "not allowed to update someone else's profile")
+        |> redirect to: "/"
       end
-      
+
     end
 
     def update(conn, %{"id" => id, "user" => user_params}) do
