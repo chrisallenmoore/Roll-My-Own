@@ -1,4 +1,8 @@
 defmodule Rmo.QueryFilter do
+  @moduledoc """
+  This module is the query filter used for finding something, in this case users, based on search criteria
+  """
+
   def filter(query, model, params, filters) do
     import Ecto.Query, only: [where: 2]
     where_clauses = cast(model, params, filters)
@@ -10,4 +14,5 @@ defmodule Rmo.QueryFilter do
     |> Map.fetch!(:changes)
     |> Map.to_list
   end
+  
 end

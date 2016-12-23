@@ -10,9 +10,9 @@ defmodule Rmo.UserController do
   """
   def get_current_user(conn, params) do
     if Plug.Conn.get_session(conn, :current_user) do
-       Plug.Conn.get_session(conn, :current_user)
-     else
-       0
+      Plug.Conn.get_session(conn, :current_user)
+    else
+      0
     end
   end
 
@@ -57,7 +57,7 @@ defmodule Rmo.UserController do
           |> redirect(to: user_path(conn, :show, user))
           {:error, changeset} ->
             render(conn, "edit.html", user: user, changeset: changeset)
-          end
-        end
-
       end
+    end
+
+end

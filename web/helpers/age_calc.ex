@@ -1,4 +1,7 @@
 defmodule AgeCalc do
+  @moduledoc """
+  This module is used to calculate a user's age given their birthdate
+  """
 
   @spec age(Ecto.Date.t, atom|{integer, integer, integer}) :: integer
   def age(%Ecto.Date{day: d, month: m, year: y}, as_of \\ :now) do
@@ -20,4 +23,5 @@ defmodule AgeCalc do
     y2 - y1
   end
   def calc_diff({y1,_,_}, {y2,_,_}), do: (y2 - y1) - 1
+  
 end
