@@ -26,7 +26,7 @@ defmodule Rmo.UserController do
       |> QueryFilter.filter(%User{}, params, [:gender_preference, :status])
       |> where( [u], u.id != ^current_user )
       #TODO: make the query eliminate current_user from results
-      #TODO: set query to only search for your gender_preference and show the user if their preference is your gender
+      #TODO: set query to only search for your gender_preference and show the user if their preference is your gender_preference
       |> order_by(desc: :updated_at)
       |> Rmo.Repo.paginate(params)
 
@@ -54,6 +54,7 @@ defmodule Rmo.UserController do
         conn
         |> put_flash(:info, "not allowed to update someone else's profile")
         |> redirect to: "/"
+
       end
 
     end
